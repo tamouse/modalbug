@@ -12,7 +12,7 @@ class SearchBar extends React.Component {
   render() {
     const {open, cancel, showCancel} = this.props
     return (
-      <View style={styles.rowContainer}>
+      <View style={styles.topBarContainer}>
         <View style={styles.searchContainer}>
           <TextInput
             ref="input"
@@ -51,7 +51,7 @@ CancelButton.propTypes = {
 
 const ResultsModal = () => {
   return (
-    <View style={styles.container}>
+    <View style={styles.resultsContainer}>
       <Text>Results would show up here if there were any</Text>
     </View>
   )
@@ -71,9 +71,11 @@ export default class App extends React.Component {
       <View style={styles.container}>
         <SearchBar open={this.openSearch} cancel={this.cancelSearch} showCancel={this.state.searchOpen}/>
 
-        <Modal isOpen={this.state.searchOpen}>
-          <Text>hello world</Text>
-        </Modal>
+        <View style={styles.subContainer}>
+          <Modal isOpen={this.state.searchOpen} position={'top'} swipeToClose={false} backButtonClose={true}>
+            <ResultsModal/>
+          </Modal>
+        </View>
       </View>
     );
   }
@@ -87,9 +89,22 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 
-  rowContainer: {
+  topBarContainer: {
+    position: 'absolute',
+    top: 0,
+    height: 50,
+    width: '100%',
     flexDirection: 'row',
     backgroundColor: 'white'
+  },
+
+  subContainer: {
+    position: 'absolute',
+    top: 50,
+    bottom: 0,
+    width: '100%',
+    flexDirection: 'column',
+    backgroundColor: 'tomato'
   },
 
   searchContainer: {
@@ -102,9 +117,20 @@ const styles = StyleSheet.create({
 
   cancelContainer: {
     flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
 
   cancel: {
     color: 'blue',
   },
+
+  resultsContainer: {
+    flex: 1,
+    backgroundColor: 'azure',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 200
+  }
 });
