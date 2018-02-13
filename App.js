@@ -83,6 +83,7 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
+    position: 'relative',
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
@@ -91,7 +92,7 @@ const styles = StyleSheet.create({
 
   topBarContainer: {
     position: 'absolute',
-    top: 0,
+    top: 50,
     height: 50,
     width: '100%',
     flexDirection: 'row',
@@ -100,7 +101,7 @@ const styles = StyleSheet.create({
 
   subContainer: {
     position: 'absolute',
-    top: 50,
+    top: 100,
     bottom: 0,
     width: '100%',
     flexDirection: 'column',
